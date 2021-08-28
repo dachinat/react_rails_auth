@@ -5,6 +5,10 @@ class Users::SessionsController < Devise::SessionsController
   clear_respond_to
   respond_to :json
 
+  def current
+    render json: User.find(current_user.id).attributes
+  end
+
   # GET /resource/sign_in
   # def new
   #   super
